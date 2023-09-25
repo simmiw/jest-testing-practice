@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`inputWithButton should render form 1`] = `
+<div>
+  <form>
+    <input
+      placeholder="Enter any text"
+      type="text"
+      value=""
+    />
+    <button>
+      Click to Submit
+    </button>
+  </form>
+  <ul />
+</div>
+`;
