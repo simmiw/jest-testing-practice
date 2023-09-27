@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function InputWithButton() {
   const [inputText, setInputText] = useState(""); // primitive => no need to create copies
@@ -14,6 +14,8 @@ export default function InputWithButton() {
       }, 2000);
     }
   }, [error]);
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
@@ -44,6 +46,7 @@ export default function InputWithButton() {
         "Oops? List limit has been exceeded!, Try deleting something from the list."
       );
     }
+    inputRef.current?.focus();
   };
 
   return (
@@ -57,9 +60,11 @@ export default function InputWithButton() {
           value={inputText}
           type="text"
           placeholder="Enter any text"
+          ref={inputRef}
           onChange={handleOnChange}
         />
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           Click to Submit
         </button>
       </form>
