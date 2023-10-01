@@ -14,7 +14,7 @@ export default function IncrementAndDecrement() {
 
   return (
     <>
-      <h1 className="text-center"> Increment and Decrement</h1>
+      <h1 className="text-center font-bold my-5 "> Increment and Decrement</h1>
       <div className="text-center m-10 ">
         <button
           className=" font-bold py-2 px-4 text-white font-bold  rounded-full bg-blue-400"

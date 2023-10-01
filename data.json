@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "simmi",
+      "age": "12",
+      "country": "India",
+      "id": 1
+    },
+    {
+      "name": "SImmi",
+      "age": "12",
+      "country": "India",
+      "id": 2
+    },
+    {
+      "name": "MON",
+      "age": "23",
+      "country": "MON",
+      "id": 3
+    }
+  ]
+}
