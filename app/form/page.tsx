@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { isValidString } from "./validators";
+import { isFieldNonEmpty, isValidString, isValidNumber } from "../utils/validators";
 
 type ErrorState = {
   name?: string;
@@ -29,21 +29,21 @@ export default function Form() {
   const isFormValid = () => {
     const validityState: ErrorState = {};
 
-    if (!userData.name.trim()) {
+    if (!isFieldNonEmpty(userData.name)) {
       validityState.name = "Name is required";
-    } else if (!userData.name.match(/^[A-Za-z ]+$/)) {
+    } else if (!isValidString(userData.name)) {
       validityState.name = "Name should only contain letters";
     }
 
-    if (!userData.age) {
+    if (!isFieldNonEmpty(userData.age)) {
       validityState.age = "Age is required";
-    } else if (!userData.age.match(/^[0-9]+$/)) {
+    } else if (!isValidNumber(userData.age)) {
       validityState.age = "Age should be a valid number";
     }
 
-    if (!userData.country.trim()) {
+    if (!isFieldNonEmpty(userData.country)) {
       validityState.country = "Country is required";
-    } else if (!userData.country.match(/^[A-Za-z ]+$/)) {
+    } else if (!isValidString(userData.country)) {
       validityState.country = "Country should only contain letters";
     }
 
@@ -53,6 +53,7 @@ export default function Form() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const isValid = isFormValid();
 
     if (isValid) {

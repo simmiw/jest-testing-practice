@@ -2,14 +2,30 @@
 
 exports[`IncrementAndDecrement should render buttons 1`] = `
 <div>
-  <button>
-    Increment
-  </button>
-  <div>
-    0
+  <h1
+    class="text-center font-bold my-5 "
+  >
+     Increment and Decrement
+  </h1>
+  <div
+    class="text-center m-10 "
+  >
+    <button
+      class=" font-bold py-2 px-4 text-white font-bold  rounded-full bg-blue-400"
+    >
+      Increment
+    </button>
+    <div>
+      0
+    </div>
+    <h2>
+      You are at intital state of counter!
+    </h2>
+    <button
+      class=" font-bold py-2 px-4 text-white font-bold  rounded-full bg-blue-400"
+    >
+      Decrement
+    </button>
   </div>
-  <button>
-    Decrement
-  </button>
 </div>
 `;
