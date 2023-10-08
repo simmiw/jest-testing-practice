@@ -1,4 +1,4 @@
-export function isValidString(userData:string) {
+export function isValidString(userData: string) {
   if (!userData.match(/^[A-Za-z ]+$/)) {
     return false;
   } else {
@@ -6,7 +6,7 @@ export function isValidString(userData:string) {
   }
 }
 
-export function isValidNumber(userData:Number | any) {
+export function isValidNumber(userData: Number | any) {
   if (!userData.match(/^[0-9]+$/)) {
     return false;
   } else {
@@ -14,8 +14,16 @@ export function isValidNumber(userData:Number | any) {
   }
 }
 
-export function isFieldNonEmpty(userData:string) {
+export function isFieldNonEmpty(userData: string) {
   if (!userData.trim()) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+export function isValidEmail(userData: string) {
+  if (!userData.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/)) {
     return false;
   } else {
     return true;
