@@ -23,8 +23,10 @@ export default function EmailForm() {
       console.log(values);
     },
 
+    //Form Validation: it takes values as parameter and return an object of errors
     validate: (values) => {
       let errors: ErrorState = {};
+
       if (!isFieldNonEmpty(values.firstName)) {
         errors.firstName = "First name is required";
       } else if (!isValidString(values.firstName)) {
@@ -59,14 +61,17 @@ export default function EmailForm() {
               value={formik.values.firstName}
               name="firstName"
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                formik.errors.firstName ? "border-red-500" : ""
+                formik.touched.firstName && formik.errors.firstName
+                  ? "border-red-500"
+                  : ""
               }`}
               type="text"
+              onBlur={formik.handleBlur}
               placeholder="Enter Your First Name"
               onChange={formik.handleChange}
               formNoValidate
             />
-            {formik.errors.firstName && (
+            {formik.touched.firstName && formik.errors.firstName && (
               <p className="text-red-500 text-xs italic">
                 {formik.errors.firstName}
               </p>
@@ -79,14 +84,17 @@ export default function EmailForm() {
               value={formik.values.lastName}
               name="lastName"
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                formik.errors.lastName ? "border-red-500" : ""
+                formik.touched.lastName && formik.errors.lastName
+                  ? "border-red-500"
+                  : ""
               }`}
               type="text"
               placeholder="Enter Your Last Name"
+              onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               formNoValidate
             />
-            {formik.errors.lastName && (
+            {formik.touched.lastName && formik.errors.lastName && (
               <p className="text-red-500 text-xs italic">
                 {formik.errors.lastName}
               </p>
@@ -99,14 +107,17 @@ export default function EmailForm() {
               value={formik.values.email}
               name="email"
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                formik.errors.email ? "border-red-500" : ""
+                formik.touched.email && formik.errors.email
+                  ? "border-red-500"
+                  : ""
               }`}
               type="email"
+              onBlur={formik.handleBlur}
               placeholder="Enter Your Email"
               onChange={formik.handleChange}
               formNoValidate
             />
-            {formik.errors.email && (
+            {formik.touched.email && formik.errors.email && (
               <p className="text-red-500 text-xs italic">
                 {formik.errors.email}
               </p>
