@@ -1,0 +1,16 @@
+{
+  "emailusers": [
+    {
+      "firstName": "Simmi",
+      "lastName": "Walia G",
+      "email": "simmiwwww@gmail.com",
+      "id": 4
+    },
+    {
+      "firstName": "Ayush",
+      "lastName": "Walia G",
+      "email": "ayushw@gmail.com",
+      "id": 5
+    }
+  ]
+}

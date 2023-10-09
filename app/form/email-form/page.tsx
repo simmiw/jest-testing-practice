@@ -1,6 +1,7 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/navigation";
 import { isValidString } from "@/app/utils/validators";
 import { isFieldNonEmpty } from "@/app/utils/validators";
 import { isValidEmail } from "@/app/utils/validators";
@@ -12,9 +13,15 @@ type ErrorState = {
 };
 
 export default function EmailForm() {
+  const router = useRouter();
+
   const validationSchema = Yup.object({
-    firstName: Yup.string().required("First name is required").matches(/^[A-Za-z ]+$/,"First name should only contain letters"),
-    lastName: Yup.string().required("Last name is required").matches(/^[A-Za-z ]+$/, "Last name should only contain letters"),
+    firstName: Yup.string()
+      .required("First name is required")
+      .matches(/^[A-Za-z ]+$/, "First name should only contain letters"),
+    lastName: Yup.string()
+      .required("Last name is required")
+      .matches(/^[A-Za-z ]+$/, "Last name should only contain letters"),
     email: Yup.string()
       .email("Plese enter valid email")
       .required("Email is required"),
@@ -27,8 +34,17 @@ export default function EmailForm() {
       email: "",
     },
     //handling form submission
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const response = await fetch("http://localhost:3005/emailusers", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (response.status === 201) {
+        router.push("/email-users");
+        router.refresh();
+      }
     },
     validationSchema,
 
