@@ -1,5 +1,6 @@
 "use client";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import { isValidString } from "@/app/utils/validators";
 import { isFieldNonEmpty } from "@/app/utils/validators";
 import { isValidEmail } from "@/app/utils/validators";
@@ -11,6 +12,13 @@ type ErrorState = {
 };
 
 export default function EmailForm() {
+  const validationSchema = Yup.object({
+    firstName: Yup.string().required("First name is required").matches(/^[A-Za-z ]+$/,"First name should only contain letters"),
+    lastName: Yup.string().required("Last name is required").matches(/^[A-Za-z ]+$/, "Last name should only contain letters"),
+    email: Yup.string()
+      .email("Plese enter valid email")
+      .required("Email is required"),
+  });
   //input states//
   const formik = useFormik({
     initialValues: {
@@ -22,30 +30,31 @@ export default function EmailForm() {
     onSubmit: (values) => {
       console.log(values);
     },
+    validationSchema,
 
     //Form Validation: it takes values as parameter and return an object of errors
-    validate: (values) => {
-      let errors: ErrorState = {};
+    // validate: (values) => {
+    //   let errors: ErrorState = {};
 
-      if (!isFieldNonEmpty(values.firstName)) {
-        errors.firstName = "First name is required";
-      } else if (!isValidString(values.firstName)) {
-        errors.firstName = "First name should only contain letters";
-      }
+    //   if (!isFieldNonEmpty(values.firstName)) {
+    //     errors.firstName = "First name is required";
+    //   } else if (!isValidString(values.firstName)) {
+    //     errors.firstName = "First name should only contain letters";
+    //   }
 
-      if (!isFieldNonEmpty(values.lastName)) {
-        errors.lastName = "Last name is required";
-      } else if (!isValidString(values.lastName)) {
-        errors.lastName = "Last name should only contain letters";
-      }
+    //   if (!isFieldNonEmpty(values.lastName)) {
+    //     errors.lastName = "Last name is required";
+    //   } else if (!isValidString(values.lastName)) {
+    //     errors.lastName = "Last name should only contain letters";
+    //   }
 
-      if (!isFieldNonEmpty(values.email)) {
-        errors.email = "Email is required";
-      } else if (!isValidEmail(values.email)) {
-        errors.email = "Plese enter valid email";
-      }
-      return errors;
-    },
+    //   if (!isFieldNonEmpty(values.email)) {
+    //     errors.email = "Email is required";
+    //   } else if (!isValidEmail(values.email)) {
+    //     errors.email = "Plese enter valid email";
+    //   }
+    //   return errors;
+    // }
   });
 
   return (
@@ -53,7 +62,8 @@ export default function EmailForm() {
       <div className="flex flex-wrap justify-center my-10">
         <form
           onSubmit={formik.handleSubmit}
-          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-sm">
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-sm"
+          noValidate>
           <label className="text-gray-700 text-sm font-bold m-2">
             First Name
             <input
@@ -69,7 +79,6 @@ export default function EmailForm() {
               onBlur={formik.handleBlur}
               placeholder="Enter Your First Name"
               onChange={formik.handleChange}
-              formNoValidate
             />
             {formik.touched.firstName && formik.errors.firstName && (
               <p className="text-red-500 text-xs italic">
@@ -92,7 +101,6 @@ export default function EmailForm() {
               placeholder="Enter Your Last Name"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              formNoValidate
             />
             {formik.touched.lastName && formik.errors.lastName && (
               <p className="text-red-500 text-xs italic">
@@ -115,7 +123,6 @@ export default function EmailForm() {
               onBlur={formik.handleBlur}
               placeholder="Enter Your Email"
               onChange={formik.handleChange}
-              formNoValidate
             />
             {formik.touched.email && formik.errors.email && (
               <p className="text-red-500 text-xs italic">
