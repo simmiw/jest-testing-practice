@@ -2,9 +2,9 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { isValidString } from "@/app/utils/validators";
-import { isFieldNonEmpty } from "@/app/utils/validators";
-import { isValidEmail } from "@/app/utils/validators";
+import { isValidString } from "@/app/utils/validators/validators";
+import { isFieldNonEmpty } from "@/app/utils/validators/validators";
+import { isValidEmail } from "@/app/utils/validators/validators";
 
 type ErrorState = {
   firstName?: string;
@@ -12,7 +12,7 @@ type ErrorState = {
   email?: string;
 };
 
-export default function EmailForm() {
+export default function StudentsForm() {
   const router = useRouter();
 
   const validationSchema = Yup.object({
@@ -25,6 +25,18 @@ export default function EmailForm() {
     email: Yup.string()
       .email("Plese enter valid email")
       .required("Email is required"),
+    physics: Yup.number()
+      .required("Required")
+      .min(0, "Should be at least 0")
+      .max(100, "Should be at most 100"),
+    chemistry: Yup.number()
+      .required("Required")
+      .min(0, "Should be at least 0")
+      .max(100, "Should be at most 100"),
+    mathematics: Yup.number()
+      .required("Required")
+      .min(0, "Should be at least 0")
+      .max(100, "Should be at most 100"),
   });
   //input states//
   const formik = useFormik({
@@ -32,17 +44,20 @@ export default function EmailForm() {
       firstName: "",
       lastName: "",
       email: "",
+      physics: "",
+      chemistry: "",
+      mathematics: "",
     },
     //handling form submission
     onSubmit: async (values) => {
-      const response = await fetch("http://localhost:3005/emailusers", {
+      const response = await fetch("http://localhost:3005/classStudents", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),
       });
 
       if (response.status === 201) {
-        router.push("/email-users");
+        router.push("/student-data");
         router.refresh();
       }
     },
@@ -145,6 +160,72 @@ export default function EmailForm() {
                 {formik.errors.email}
               </p>
             )}
+          </label>
+
+          <label className="text-gray-700 text-sm font-bold m-2">
+            Physics
+            <input
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formik.touched.physics && formik.errors.physics
+                  ? "border-red-500"
+                  : ""
+              }`}
+              required
+              type="number"
+              name="physics"
+              placeholder="Enter Physics Marks"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+            />
+             {formik.touched.physics && formik.errors.physics && (
+              <p className="text-red-500 text-xs italic">
+                {formik.errors.physics}
+              </p>
+             )}
+          </label>
+
+          <label className="text-gray-700 text-sm font-bold m-2">
+           Chemistry
+            <input
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formik.touched.chemistry && formik.errors.chemistry
+                  ? "border-red-500"
+                  : ""
+              }`}
+              required
+              type="number"
+              name="chemistry"
+              placeholder="Enter Chemistry Marks"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+            />
+             {formik.touched.chemistry && formik.errors.chemistry && (
+              <p className="text-red-500 text-xs italic">
+                {formik.errors.chemistry}
+              </p>
+             )}
+          </label>
+
+          <label className="text-gray-700 text-sm font-bold m-2">
+            Mathematics
+            <input
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                formik.touched.mathematics && formik.errors.mathematics
+                  ? "border-red-500"
+                  : ""
+              }`}
+              required
+              type="number"
+              name="mathematics"
+              placeholder="Enter Mathematics Marks"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+            />
+             {formik.touched.mathematics && formik.errors.mathematics && (
+              <p className="text-red-500 text-xs italic">
+                {formik.errors.mathematics}
+              </p>
+             )}
           </label>
           <button
             type="submit"

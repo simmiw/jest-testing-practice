@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { isFieldNonEmpty, isValidString, isValidNumber } from "../utils/validators";
+import { isFieldNonEmpty, isValidString, isValidNumber } from "../utils/validators/validators";
 
 type ErrorState = {
   name?: string;

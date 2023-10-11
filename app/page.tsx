@@ -14,7 +14,7 @@ export default function MainPage() {
           <Link href="/form">Add user details</Link>
         </div>
         <div className=" my-2 no-underline">
-          <Link href="/form/email-form">Form Creation Using Formik</Link>
+          <Link href="/marks-form">Form Creation Using Formik</Link>
         </div>
       </div>
     </>

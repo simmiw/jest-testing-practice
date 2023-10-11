@@ -1,15 +1,48 @@
 {
-  "emailusers": [
+  "classStudents": [
     {
       "firstName": "Simmi",
-      "lastName": "Walia G",
-      "email": "simmiwwww@gmail.com",
-      "id": 4
+      "lastName": "Walia",
+      "email": "simmi@gmail.com",
+      "physics": 90,
+      "chemistry": 87,
+      "mathematics": 90,
+      "id": 1
     },
     {
       "firstName": "Ayush",
-      "lastName": "Walia G",
-      "email": "ayushw@gmail.com",
+      "lastName": "Walia",
+      "email": "ayushwalia11@gmail.com",
+      "physics": 89,
+      "chemistry": 98,
+      "mathematics": 89,
+      "id": 2
+    },
+    {
+      "firstName": "hello",
+      "lastName": "iam",
+      "email": "iam@gmail.com",
+      "physics": 89,
+      "chemistry": 89,
+      "mathematics": 89,
+      "id": 3
+    },
+    {
+      "firstName": "gugu",
+      "lastName": "gaga",
+      "email": "gugugaga@gmail.com",
+      "physics": 56,
+      "chemistry": 77,
+      "mathematics": 87,
+      "id": 4
+    },
+    {
+      "firstName": "Hero",
+      "lastName": "Singh",
+      "email": "herosingh@gmail.com",
+      "physics": 87,
+      "chemistry": 78,
+      "mathematics": 67,
       "id": 5
     }
   ]
