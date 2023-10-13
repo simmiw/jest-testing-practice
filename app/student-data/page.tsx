@@ -1,3 +1,4 @@
+import DonutChart from "../utils/charts/charts";
 import getStudentsDetails from "../utils/getStudentDetails/fetch";
 
 export default async function StudentDetails() {
@@ -40,6 +41,7 @@ export default async function StudentDetails() {
           }
         )}
       </table>
+      <DonutChart data={usersData} />
     </>
   );
 }

@@ -58,7 +58,7 @@ export default function StudentsForm() {
 
       if (response.status === 201) {
         router.push("/student-data");
-        router.refresh();
+        router.refresh();    
       }
     },
     validationSchema,

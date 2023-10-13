@@ -44,6 +44,60 @@
       "chemistry": 78,
       "mathematics": 67,
       "id": 5
+    },
+    {
+      "firstName": "Amitabh",
+      "lastName": "Bachan",
+      "email": "BigB@gmail.com",
+      "physics": 56,
+      "chemistry": 67,
+      "mathematics": 65,
+      "id": 6
+    },
+    {
+      "firstName": "Hey",
+      "lastName": "Sam",
+      "email": "HeySam@gmail.com",
+      "physics": 76,
+      "chemistry": 67,
+      "mathematics": 89,
+      "id": 7
+    },
+    {
+      "firstName": "dnlds",
+      "lastName": "sdmsdm",
+      "email": "snsks@gmail.com",
+      "physics": 11,
+      "chemistry": 34,
+      "mathematics": 56,
+      "id": 8
+    },
+    {
+      "firstName": "Java",
+      "lastName": "Script",
+      "email": "JS@gmail.com",
+      "physics": 90,
+      "chemistry": 99,
+      "mathematics": 90,
+      "id": 9
+    },
+    {
+      "firstName": "Java",
+      "lastName": "Script",
+      "email": "JS@gmail.com",
+      "physics": 90,
+      "chemistry": 99,
+      "mathematics": 90,
+      "id": 10
+    },
+    {
+      "firstName": "Aman",
+      "lastName": "Singh",
+      "email": "as@gmail.com",
+      "physics": 65,
+      "chemistry": 57,
+      "mathematics": 77,
+      "id": 11
     }
   ]
 }
