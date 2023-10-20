@@ -6,7 +6,7 @@ export default async function StudentDetails() {
   return (
     <>
       <table className=" ml-auto mr-auto my-10">
-        <thead className="bg-gray-300">
+        <thead className="bg-gray-300"> 
           <tr>
             <th className=" border px-4 py-2">First Name</th>
             <th className=" border px-4 py-2">Last Name</th>
